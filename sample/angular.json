@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "tuition": {
+      "projectType": "application",
+      "root": "apps/tuition",
+      "sourceRoot": "apps/tuition/src",
+      "prefix": "sample",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/tuition",
+            "index": "apps/tuition/src/index.html",
+            "main": "apps/tuition/src/main.ts",
+            "polyfills": "apps/tuition/src/polyfills.ts",
+            "tsConfig": "apps/tuition/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/tuition/src/favicon.ico",
+              "apps/tuition/src/assets"
+            ],
+            "styles": ["apps/tuition/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/tuition/src/environments/environment.ts",
+                  "with": "apps/tuition/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "tuition:build:production"
+            },
+            "development": {
+              "browserTarget": "tuition:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tuition:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/tuition/src/**/*.ts",
+              "apps/tuition/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/tuition"],
+          "options": {
+            "jestConfig": "apps/tuition/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tuition-e2e": {
+      "root": "apps/tuition-e2e",
+      "sourceRoot": "apps/tuition-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tuition-e2e/cypress.json",
+            "tsConfig": "apps/tuition-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tuition:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tuition:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tuition-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "tuition"
+}
