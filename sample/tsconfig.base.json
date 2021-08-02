@@ -19,6 +19,9 @@
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
       "@sample/tuition/lesson-plan": [
         "libs/tuition/feature-lesson-plan/src/index.ts"
+      ],
+      "@sample/tuition/ui/main-layout": [
+        "libs/tuition/ui/main-layout/src/index.ts"
       ]
     }
   },
