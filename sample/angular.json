@@ -51,6 +51,56 @@
         }
       }
     },
+    "shared-auth": {
+      "projectType": "library",
+      "root": "libs/shared/auth",
+      "sourceRoot": "libs/shared/auth/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/auth"],
+          "options": {
+            "jestConfig": "libs/shared/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/auth/src/**/*.ts",
+              "libs/shared/auth/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-ui-table": {
+      "projectType": "library",
+      "root": "libs/shared/ui/table",
+      "sourceRoot": "libs/shared/ui/table/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/table"],
+          "options": {
+            "jestConfig": "libs/shared/ui/table/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/table/src/**/*.ts",
+              "libs/shared/ui/table/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "tuition": {
       "projectType": "application",
       "root": "apps/tuition",
@@ -169,6 +219,31 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/tuition-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "tuition-feature-lesson-plan": {
+      "projectType": "library",
+      "root": "libs/tuition/feature-lesson-plan",
+      "sourceRoot": "libs/tuition/feature-lesson-plan/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/feature-lesson-plan"],
+          "options": {
+            "jestConfig": "libs/tuition/feature-lesson-plan/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/feature-lesson-plan/src/**/*.ts",
+              "libs/tuition/feature-lesson-plan/src/**/*.html"
+            ]
           }
         }
       }

@@ -30,12 +30,21 @@
     "api": {
       "tags": []
     },
+    "shared-auth": {
+      "tags": []
+    },
+    "shared-ui-table": {
+      "tags": ["shared", "ui"]
+    },
     "tuition": {
       "tags": []
     },
     "tuition-e2e": {
       "tags": [],
       "implicitDependencies": ["tuition"]
+    },
+    "tuition-feature-lesson-plan": {
+      "tags": ["tuition", "feature"]
     }
   }
 }
