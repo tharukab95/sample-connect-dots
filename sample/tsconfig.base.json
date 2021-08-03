@@ -16,13 +16,16 @@
     "baseUrl": ".",
     "paths": {
       "@sample/auth": ["libs/shared/auth/src/index.ts"],
+      "@sample/reactive-form": ["libs/shared/ui/reactive-form/src/index.ts"],
+      "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
       "@sample/tuition/lesson-plan": [
         "libs/tuition/feature-lesson-plan/src/index.ts"
       ],
       "@sample/tuition/ui/main-layout": [
         "libs/tuition/ui/main-layout/src/index.ts"
-      ]
+      ],
+      "@tuition/data-access": ["libs/tuition/data-access/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

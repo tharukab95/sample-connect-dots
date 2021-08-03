@@ -33,11 +33,20 @@
     "shared-auth": {
       "tags": []
     },
+    "shared-data-access": {
+      "tags": ["shared", "data-access"]
+    },
+    "shared-ui-reactive-form": {
+      "tags": ["shared", "ui"]
+    },
     "shared-ui-table": {
       "tags": ["shared", "ui"]
     },
     "tuition": {
       "tags": []
+    },
+    "tuition-data-access": {
+      "tags": ["tuition", "data-access"]
     },
     "tuition-e2e": {
       "tags": [],

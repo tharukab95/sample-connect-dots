@@ -76,6 +76,56 @@
         }
       }
     },
+    "shared-data-access": {
+      "projectType": "library",
+      "root": "libs/shared/data-access",
+      "sourceRoot": "libs/shared/data-access/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-access"],
+          "options": {
+            "jestConfig": "libs/shared/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/data-access/src/**/*.ts",
+              "libs/shared/data-access/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-ui-reactive-form": {
+      "projectType": "library",
+      "root": "libs/shared/ui/reactive-form",
+      "sourceRoot": "libs/shared/ui/reactive-form/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui/reactive-form"],
+          "options": {
+            "jestConfig": "libs/shared/ui/reactive-form/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui/reactive-form/src/**/*.ts",
+              "libs/shared/ui/reactive-form/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-ui-table": {
       "projectType": "library",
       "root": "libs/shared/ui/table",
@@ -121,7 +171,10 @@
               "apps/tuition/src/favicon.ico",
               "apps/tuition/src/assets"
             ],
-            "styles": ["apps/tuition/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/tuition/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -193,6 +246,31 @@
           "options": {
             "jestConfig": "apps/tuition/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tuition-data-access": {
+      "projectType": "library",
+      "root": "libs/tuition/data-access",
+      "sourceRoot": "libs/tuition/data-access/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/data-access"],
+          "options": {
+            "jestConfig": "libs/tuition/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/data-access/src/**/*.ts",
+              "libs/tuition/data-access/src/**/*.html"
+            ]
           }
         }
       }
