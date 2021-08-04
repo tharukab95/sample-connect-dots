@@ -52,6 +52,9 @@
       "tags": [],
       "implicitDependencies": ["tuition"]
     },
+    "tuition-feature-courses": {
+      "tags": ["tuition", "feature"]
+    },
     "tuition-ui-main-layout": {
       "tags": ["tuition", "ui"]
     }

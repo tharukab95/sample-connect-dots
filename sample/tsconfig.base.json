@@ -22,6 +22,7 @@
       "@sample/tuition/ui/main-layout": [
         "libs/tuition/ui/main-layout/src/index.ts"
       ],
+      "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
       "@tuition/data-access": ["libs/tuition/data-access/src/index.ts"]
     }
   },
