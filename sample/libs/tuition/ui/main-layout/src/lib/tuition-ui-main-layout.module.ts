@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Route } from '@angular/router';
@@ -16,6 +16,5 @@ export const tuitionUiMainLayoutRoutes: Route[] = [];
 @NgModule({
   imports: [CommonModule, BrowserModule,RouterModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule],
   declarations: [SideNavComponent, HomeComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class TuitionUiMainLayoutModule {}

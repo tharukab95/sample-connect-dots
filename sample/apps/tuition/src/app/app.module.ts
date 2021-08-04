@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -23,26 +24,27 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    StoreModule.forRoot(
-      {},
-      {
-        metaReducers: !environment.production ? [] : [],
-        runtimeChecks: {
-          strictActionImmutability: true,
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks : {
           strictStateImmutability: true,
-        },
+          strictActionImmutability: true,
+          strictActionSerializability: true,
+          strictStateSerializability:true
       }
-    ),
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }) : [],
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal
-    }),
+    })
   ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
