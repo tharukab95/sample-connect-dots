@@ -24,9 +24,8 @@ export class HomeComponent implements OnInit {
 
     constructor(
       private dialog: MatDialog,
-      private store: Store<AppState>) {
-
-    }
+      private store: Store<AppState>
+    ){}
 
     ngOnInit() {
       this.reload();
@@ -34,11 +33,11 @@ export class HomeComponent implements OnInit {
 
   reload() {
 
-        this.beginnerCourses$ = this.store.pipe(select(selectBeginnerCourses));
+    this.beginnerCourses$ = this.store.pipe(select(selectBeginnerCourses));
 
-        this.advancedCourses$ = this.store.pipe(select(selectAdvancedCourses));
+    this.advancedCourses$ = this.store.pipe(select(selectAdvancedCourses));
 
-        this.promoTotal$ = this.store.pipe(select(selectPromoTotal));
+    this.promoTotal$ = this.store.pipe(select(selectPromoTotal));
 
   }
 

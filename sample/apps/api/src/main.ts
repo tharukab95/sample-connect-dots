@@ -1,6 +1,4 @@
 import * as express from 'express';
-const { buildSanitizeFunction } = require('express-validator');
-const sanitizeBodyAndQuery = buildSanitizeFunction(['body', 'query']);
 import { getAllCourses, getCourseByUrl } from "./app/get-courses.route";
 import { searchLessons } from "./app/search-lessons.route";
 import { loginUser } from "./app/auth.route";
