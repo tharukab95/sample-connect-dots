@@ -301,31 +301,6 @@
         }
       }
     },
-    "tuition-feature-lesson-plan": {
-      "projectType": "library",
-      "root": "libs/tuition/feature-lesson-plan",
-      "sourceRoot": "libs/tuition/feature-lesson-plan/src",
-      "prefix": "sample",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tuition/feature-lesson-plan"],
-          "options": {
-            "jestConfig": "libs/tuition/feature-lesson-plan/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/tuition/feature-lesson-plan/src/**/*.ts",
-              "libs/tuition/feature-lesson-plan/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "tuition-ui-main-layout": {
       "projectType": "library",
       "root": "libs/tuition/ui/main-layout",
