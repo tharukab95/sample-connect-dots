@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {compareCourses, Course} from '../model/course';
+import {Course} from '../model/course';
 import {Observable} from "rxjs";
 import {defaultDialogConfig} from '../shared/default-dialog-config';
 import {EditCourseDialogComponent} from '../edit-course-dialog/edit-course-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import {map, shareReplay} from 'rxjs/operators';
-import {CoursesHttpService} from '../services/courses-http.service';
 import {AppState} from 'apps/tuition/src/app/reducers/index';
 import {select, Store} from '@ngrx/store';
 import {selectAdvancedCourses, selectBeginnerCourses, selectPromoTotal} from '../+state/courses/courses.selectors';
@@ -17,11 +15,11 @@ import {selectAdvancedCourses, selectBeginnerCourses, selectPromoTotal} from '..
 })
 export class HomeComponent implements OnInit {
 
-    promoTotal$: Observable<number>
+    promoTotal$: Observable<number> | undefined;
 
-    beginnerCourses$: Observable<Course[]>;
+    beginnerCourses$: Observable<Course[]> | undefined;
 
-    advancedCourses$: Observable<Course[]>;
+    advancedCourses$: Observable<Course[]> | undefined;
 
 
     constructor(

@@ -3,33 +3,32 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Course} from '../model/course';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {CoursesHttpService} from '../services/courses-http.service';
-import {AppState} from '../../reducers';
+import {AppState} from 'apps/tuition/src/app/reducers/index';
 import {Store} from '@ngrx/store';
 import {Update} from '@ngrx/entity';
-import {courseUpdated} from '../course.actions';
+import {courseUpdated} from '../+state/courses/courses.actions';
 
 @Component({
   selector: 'sample-course-dialog',
   templateUrl: './edit-course-dialog.component.html',
-  styleUrls: ['./edit-course-dialog.component.css']
+  styleUrls: ['./edit-course-dialog.component.scss']
 })
 export class EditCourseDialogComponent {
 
-  form: FormGroup;
+  form: FormGroup | undefined;
 
   dialogTitle: string;
 
-  course: Course;
+  course: Course | undefined | null;
 
   mode: 'create' | 'update';
 
-  loading$:Observable<boolean>;
+  loading$?:Observable<boolean>;
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EditCourseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data,
+    @Inject(MAT_DIALOG_DATA) data:any,
     private store: Store<AppState>) {
 
     this.dialogTitle = data.dialogTitle;
@@ -64,7 +63,7 @@ export class EditCourseDialogComponent {
 
     const course: Course = {
       ...this.course,
-      ...this.form.value
+      ...this.form?.value
     };
 
     const update: Update<Course> = {

@@ -29,7 +29,7 @@ import { coursesReducer } from './+state/courses/courses.reducer';
 
 export const coursesRoutes: Routes = [
   {
-    path: 'tuition',
+    path: '',
     component: HomeComponent,
     resolve: {
         courses: CoursesResolver

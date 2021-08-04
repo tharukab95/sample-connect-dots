@@ -13,9 +13,11 @@ import { CoursesHttpService } from '../services/courses-http.service';
 })
 export class CourseComponent implements OnInit {
 
-  course$!: Observable<Course>;
+  course$: Observable<Course> | undefined;
 
-  lessons$!: Observable<Lesson[]>;
+  lessons$?: Observable<Lesson[]>;
+
+  loading$?:Observable<boolean>;
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
