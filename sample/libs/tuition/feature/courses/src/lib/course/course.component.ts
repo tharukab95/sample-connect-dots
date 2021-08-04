@@ -13,9 +13,9 @@ import { CoursesHttpService } from '../services/courses-http.service';
 })
 export class CourseComponent implements OnInit {
 
-  course$: Observable<Course>;
+  course$!: Observable<Course>;
 
-  lessons$: Observable<Lesson[]>;
+  lessons$!: Observable<Lesson[]>;
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
@@ -30,7 +30,7 @@ export class CourseComponent implements OnInit {
 
     const courseUrl = this.route.snapshot.paramMap.get('courseUrl');
 
-    this.course$ = this.coursesService.findCourseByUrl(courseUrl);
+    this.course$ = this.coursesService.findCourseByUrl(courseUrl ? courseUrl : '');
 
     this.lessons$ = this.course$.pipe(
       concatMap(course => this.coursesService.findLessons(course.id)),
@@ -38,7 +38,6 @@ export class CourseComponent implements OnInit {
     );
 
   }
-
 
   loadLessonsPage(course: Course) {
 

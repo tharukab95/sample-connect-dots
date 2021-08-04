@@ -30,8 +30,8 @@ const structure: Field[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  structure$: Observable<Field[]>;
-  data$: Observable<any>;
+  structure$!: Observable<Field[]>;
+  data$!: Observable<any>;
 
   constructor(private ngrxFormsFacade: NgrxFormsFacade, private facade: AuthFacade) {}
 

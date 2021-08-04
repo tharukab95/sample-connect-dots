@@ -5,14 +5,14 @@ import {EditCourseDialogComponent} from "../edit-course-dialog/edit-course-dialo
 import {defaultDialogConfig} from '../shared/default-dialog-config';
 
 @Component({
-    selector: 'sample-courses-card-list',
+    selector: 'courses-card-list',
     templateUrl: './courses-card-list.component.html',
     styleUrls: ['./courses-card-list.component.scss']
 })
 export class CoursesCardListComponent implements OnInit {
 
     @Input()
-    courses: Course[];
+    courses!: Course[];
 
     @Output()
     courseChanged = new EventEmitter();
