@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CoursesEntity, Lesson } from '../+state/courses/courses.models';
+import { Course } from '../model/course';
+import { Lesson } from '../model/lesson';
 import { Observable } from 'rxjs';
-import { concatMap, delay, filter, first, map, shareReplay, tap, withLatestFrom}  from 'rxjs/operators';
+import { concatMap,tap}  from 'rxjs/operators';
 import { CoursesHttpService } from '../services/courses-http.service';
-
 
 @Component({
   selector: 'sample-course',
@@ -13,7 +13,7 @@ import { CoursesHttpService } from '../services/courses-http.service';
 })
 export class CourseComponent implements OnInit {
 
-  course$: Observable<CoursesEntity>;
+  course$: Observable<Course>;
 
   lessons$: Observable<Lesson[]>;
 
@@ -24,12 +24,11 @@ export class CourseComponent implements OnInit {
   constructor(
     private coursesService: CoursesHttpService,
     private route: ActivatedRoute) {
-
   }
 
   ngOnInit() {
 
-    const courseUrl = this.route.snapshot.paramMap.get("courseUrl");
+    const courseUrl = this.route.snapshot.paramMap.get('courseUrl');
 
     this.course$ = this.coursesService.findCourseByUrl(courseUrl);
 

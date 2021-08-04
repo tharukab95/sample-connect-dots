@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromCourses from './+state/courses/courses.reducer';
 import { CoursesEffects } from './+state/courses/courses.effects';
 import { CoursesResolver } from './courses.resolver';
 
@@ -26,6 +25,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { coursesReducer } from './+state/courses/courses.reducer';
 
 export const coursesRoutes: Routes = [
   {
@@ -60,11 +60,8 @@ export const coursesRoutes: Routes = [
     MatDatepickerModule,
     ReactiveFormsModule,
     RouterModule.forChild(coursesRoutes),
-    StoreModule.forFeature(
-      fromCourses.COURSES_FEATURE_KEY,
-      fromCourses.reducer
-    ),
     EffectsModule.forFeature([CoursesEffects]),
+    StoreModule.forFeature("courses", coursesReducer)
   ],
   declarations: [
     HomeComponent,
@@ -81,7 +78,11 @@ export const coursesRoutes: Routes = [
   entryComponents: [EditCourseDialogComponent],
   providers: [
     CoursesHttpService,
-      CoursesResolver
+    CoursesResolver
   ]
 })
-export class TuitionFeatureCoursesModule {}
+export class TuitionFeatureCoursesModule {
+  constructor() {
+
+  }
+}

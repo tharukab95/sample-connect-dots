@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import { AppState } from 'apps/tuition/src/app/reducers/index';
+import {AppState} from 'apps/tuition/src/app/reducers/index';
 import {select, Store} from '@ngrx/store';
 import {filter, finalize, first, tap} from 'rxjs/operators';
 import {loadAllCourses} from './+state/courses/courses.actions';
-import {} from './+state/courses/courses.selectors';
+import {areCoursesLoaded} from './+state/courses/courses.selectors';
 
 
 @Injectable()

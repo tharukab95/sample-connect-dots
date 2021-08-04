@@ -1,38 +1,35 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { COURSES_FEATURE_KEY, State, coursesAdapter } from './courses.reducer';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { CoursesState } from '../../+state/courses/courses.reducer';
+
+import * as fromCourses from '../../+state/courses/courses.reducer';
 
 // Lookup the 'Courses' feature state managed by NgRx
-export const getCoursesState =
-  createFeatureSelector<State>(COURSES_FEATURE_KEY);
+export const selectCoursesState =
+    createFeatureSelector<CoursesState>("courses");
 
-const { selectAll, selectEntities } = coursesAdapter.getSelectors();
-
-export const getCoursesLoaded = createSelector(
-  getCoursesState,
-  (state: State) => state.loaded
+export const selectAllCourses = createSelector(
+    selectCoursesState,
+    fromCourses.selectAll
 );
 
-export const getCoursesError = createSelector(
-  getCoursesState,
-  (state: State) => state.error
+export const selectBeginnerCourses = createSelector(
+  selectAllCourses,
+  courses => courses.filter(course => course.category == 'BEGINNER')
 );
 
-export const getAllCourses = createSelector(getCoursesState, (state: State) =>
-  selectAll(state)
+export const selectAdvancedCourses = createSelector(
+  selectAllCourses,
+  courses => courses.filter(course => course.category == 'ADVANCED')
 );
 
-export const getCoursesEntities = createSelector(
-  getCoursesState,
-  (state: State) => selectEntities(state)
+export const selectPromoTotal = createSelector(
+selectAllCourses,
+courses => courses.filter(course => course.promo).length
 );
 
-export const getSelectedId = createSelector(
-  getCoursesState,
-  (state: State) => state.selectedId
+
+export const areCoursesLoaded = createSelector(
+  selectCoursesState,
+  state => state.allCoursesLoaded
 );
 
-export const getSelected = createSelector(
-  getCoursesEntities,
-  getSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
-);

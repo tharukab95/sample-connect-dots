@@ -28,7 +28,7 @@ describe('CoursesEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: CoursesActions.init() });
+      actions = hot('-a-|', { a: CoursesActions.loadAllCourses() });
 
       const expected = hot('-a-|', {
         a: CoursesActions.loadCoursesSuccess({ courses: [] }),
