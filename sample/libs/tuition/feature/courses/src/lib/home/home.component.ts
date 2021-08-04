@@ -17,11 +17,11 @@ import {selectAdvancedCourses, selectBeginnerCourses, selectPromoTotal} from '..
 })
 export class HomeComponent implements OnInit {
 
-    promoTotal$!: Observable<number>
+    promoTotal$: Observable<number>
 
-    beginnerCourses$!: Observable<Course[]>;
+    beginnerCourses$: Observable<Course[]>;
 
-    advancedCourses$!: Observable<Course[]>;
+    advancedCourses$: Observable<Course[]>;
 
 
     constructor(

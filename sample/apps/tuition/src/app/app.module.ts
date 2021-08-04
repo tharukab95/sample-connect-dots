@@ -12,8 +12,10 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
-import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
+import { TuitionUiMainLayoutModule } from '@sample/main-layout';
+import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -27,6 +29,9 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatSidenavModule,
+    TuitionUiMainLayoutModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     StoreModule.forRoot(reducers, {
       metaReducers,
