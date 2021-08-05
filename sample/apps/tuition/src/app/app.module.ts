@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { TuitionUiMainLayoutModule } from '@sample/main-layout';
 import { HomeComponent } from 'libs/tuition/ui/main-layout/src/lib/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sampleOrg', pathMatch: 'full' },

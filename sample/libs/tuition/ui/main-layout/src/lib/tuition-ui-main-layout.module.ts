@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { HomeComponent } from './home/home.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     MatIconModule,
     MatListModule
   ],
-  declarations: [SideNavComponent, HomeComponent],
-  exports: [SideNavComponent, HomeComponent]
+  declarations: [HomeComponent,SideNavComponent,HeaderComponent],
+  exports: [HomeComponent, SideNavComponent]
 })
 export class TuitionUiMainLayoutModule {}
