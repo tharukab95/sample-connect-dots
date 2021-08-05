@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container my-light-theme" [class.sample-dark-theme]="darkModeEnabled">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -74,7 +74,12 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{title}}</span>
+      <span class="example-spacer"></span>
+      <mat-slide-toggle class="example-margin"
+      (change)="switchTheme()"></mat-slide-toggle>
     </mat-toolbar>
+
     <ng-content></ng-content>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

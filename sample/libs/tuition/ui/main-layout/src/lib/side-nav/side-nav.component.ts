@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
+  darkModeEnabled: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -25,6 +26,10 @@ export class SideNavComponent {
 
     get title() {
       return this.titleService.getTitle();
+    }
+
+    switchTheme() {
+      this.darkModeEnabled = !this.darkModeEnabled ;
     }
 
 }

@@ -172,8 +172,7 @@
               "apps/tuition/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/tuition/src/styles.scss"
+              "apps/tuition/src/sample-theme.scss"
             ],
             "scripts": []
           },

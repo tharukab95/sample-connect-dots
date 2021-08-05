@@ -20,14 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sampleOrg', pathMatch: 'full' },
-  { path: 'sampleOrg', component: HomeComponent, children: [
+  { path: '', component: HomeComponent, children: [
     {
       path: 'courses',
       loadChildren: () => import(`@tuition/courses`).then(m => m.TuitionFeatureCoursesModule),
      },
   ] },
-  { path: '**', redirectTo: 'main' },
 ];
 
 @NgModule({
