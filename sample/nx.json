@@ -27,9 +27,6 @@
     ]
   },
   "projects": {
-    "api": {
-      "tags": []
-    },
     "shared-auth": {
       "tags": []
     },

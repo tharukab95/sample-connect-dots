@@ -16,12 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@sample/auth": ["libs/shared/auth/src/index.ts"],
+      "@sample/main-layout": ["libs/tuition/ui/main-layout/src/index.ts"],
       "@sample/reactive-form": ["libs/shared/ui/reactive-form/src/index.ts"],
       "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
-      "@sample/main-layout": [
-        "libs/tuition/ui/main-layout/src/index.ts"
-      ],
       "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
       "@tuition/data-access": ["libs/tuition/data-access/src/index.ts"]
     }
