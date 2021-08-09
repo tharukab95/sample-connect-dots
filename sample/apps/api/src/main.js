@@ -1,14 +1,12 @@
-import * as express from 'express';
-import * as ProgressBar from 'progress';
+const config = require('./app/config/config');
+const app = require('./app/config/express');
+require('./app/config/mongoose');
 
-const app = express();
+if (!module.parent) {
+  app.listen(config.port, () => {
+    console.info(`server started on port ${config.port} (${config.env})`);
+  });
+}
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to api!' });
-});
+module.exports = app;
 
-const port = process.env.port || 3000;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);

@@ -42,7 +42,13 @@ export class CourseComponent implements OnInit {
   }
 
   loadLessonsPage(course: Course) {
+    this.lessonsService.getWithQuery({
+      'courseId': course.id.toString(),
+      'pageNumber': this.nextPage.toString(),
+      'pageSize': '3'
+    });
 
+    this.nextPage += 1;
   }
 
 }

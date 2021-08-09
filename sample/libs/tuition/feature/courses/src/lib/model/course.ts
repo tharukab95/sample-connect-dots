@@ -1,14 +1,15 @@
 export interface Course {
+  _id: string,
   id: number;
   seqNo:number;
   url:string;
   iconUrl: string;
-  courseListIcon: string;
-  description: string;
+  courseListIcon?: string;
+  description?: string;
   longDescription?: string;
   category: string;
   lessonsCount: number;
-  promo: boolean;
+  promo?: boolean;
 }
 
 

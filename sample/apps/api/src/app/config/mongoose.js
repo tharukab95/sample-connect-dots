@@ -5,12 +5,14 @@ const debug = require('debug')('express-mongoose-es6-rest-api:index');
 const config = require('./config');
 
 // connect to mongo db
-const mongoUri = config.mongo.host;
+const mongoUri = "mongodb+srv://ilearnhub-premium:Dragon102824@ilearn-store.3al69.mongodb.net/sample_store?retryWrites=true&w=majority";
+
 mongoose.connect(mongoUri, {
   keepAlive: 1,
   useCreateIndex: true,
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
