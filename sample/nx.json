@@ -55,6 +55,9 @@
     "tuition-feature-courses": {
       "tags": ["tuition", "feature"]
     },
+    "tuition-feature-subscriptions": {
+      "tags": ["feature", "subscription"]
+    },
     "tuition-ui-main-layout": {
       "tags": ["tuition", "feature"]
     }

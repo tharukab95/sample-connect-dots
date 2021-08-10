@@ -6,7 +6,8 @@ const config = {
   frontend: 'http:localhost:4200' || 'angular',
   mongo: {
     host: 'mongodb+srv://ilearnhub-premium:Dragon102824@ilearn-store.3al69.mongodb.net/sample_store?retryWrites=true&w=majority',
-  }
+  },
+  
 };
 
 module.exports = config;

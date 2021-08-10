@@ -20,6 +20,9 @@
       "@sample/reactive-form": ["libs/shared/ui/reactive-form/src/index.ts"],
       "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
+      "@sample/tuition-feature-subscriptions": [
+        "libs/tuition/feature/subscriptions/src/index.ts"
+      ],
       "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
       "@tuition/data-access": ["libs/tuition/data-access/src/index.ts"]
     }
