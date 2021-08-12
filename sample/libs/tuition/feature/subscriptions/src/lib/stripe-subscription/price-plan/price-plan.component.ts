@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IMemberShipPlan } from '../../models/IMembership';
 import { StripeSubscriptionService } from '../../services/stripe-subscription.service';
@@ -9,10 +9,15 @@ import { StripeSubscriptionService } from '../../services/stripe-subscription.se
   styleUrls: ['./price-plan.component.scss'],
 })
 export class PricePlanComponent implements OnInit {
-  $membership: Observable<IMemberShipPlan> | undefined;
-  constructor(private stripeSubscriptionService: StripeSubscriptionService) {}
+  @Input()
+  membership: IMemberShipPlan | undefined;
+
+  @Input()
+  index: number | undefined
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.$membership = this.stripeSubscriptionService.getMembership();
+
   }
 }

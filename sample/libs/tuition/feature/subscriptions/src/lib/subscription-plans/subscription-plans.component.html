@@ -1,41 +1,11 @@
-<div class="togethere-background"></div>
-<div class="sr-root">
-  <div class="sr-main">
-    <header class="sr-header">
-      <div class="sr-header__logo"></div>
-    </header>
-    <h1>Choose a collaboration plan</h1>
-
-    <div class="price-table-container">
-      <section>
-        <form action="/create-checkout-session" method="POST">
-          <input type="hidden" id="basicPrice" name="priceId">
-          <img
-            src="/img/starter.png"
-            width="120"
-            height="120"
-            />
-          <div class="name">Starter</div>
-          <div class="price">$12</div>
-          <div class="duration">per month</div>
-          <button id="basic-plan-btn">Select</button>
-        </form>
-      </section>
-      <section>
-        <form action="/create-checkout-session" method="POST">
-          <input type="hidden" id="proPrice" name="priceId">
-          <img
-            src="/img/professional.png"
-            width="120"
-            height="120"
-            />
-          <div class="name">Professional</div>
-          <div class="price">$18</div>
-          <div class="duration">per month</div>
-          <button id="pro-plan-btn">Select</button>
-        </form>
-      </section>
-    </div>
-  </div>
+<div class="py-4 text-center">
+	<h2 class="mb-1">Pricing plans</h2>
 </div>
-<div id="error-message" class="error-message"></div>
+
+<div fxLayout="row wrap">
+    <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let plan of $plans| async; index as i">
+        <app-price-plan [membership]=plan [index]=i></app-price-plan>
+    </div>
+</div>
+
+

@@ -172,7 +172,11 @@
               "apps/tuition/src/favicon.ico",
               "apps/tuition/src/assets"
             ],
-            "styles": ["apps/tuition/src/sample-theme.scss"],
+            "styles": ["apps/tuition/src/sample-theme.scss",
+               "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss"
+            ],
             "scripts": []
           },
           "configurations": {
