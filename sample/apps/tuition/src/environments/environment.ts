@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  STRIPE_PUBLISHABLE_KEY: 'pk_test_51JF9qgLRzwdq8WffxrSlg4IYXzBo03USZZemG9oJiFIvS3K4C2Yqcn8xzxTq7kqSii7RhIjaGzZadPYoz5Wji7kj00obXYZHkG',
 };
 
 /*

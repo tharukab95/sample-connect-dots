@@ -67,6 +67,18 @@ app.use((req, res, next) => {
   return next(err);
 });
 
+//cors support
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", config.frontend);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS, DELETE");
+  next();
+});
+
+
 app.use(
   express.json({
     // We need the raw body to verify webhook signatures.

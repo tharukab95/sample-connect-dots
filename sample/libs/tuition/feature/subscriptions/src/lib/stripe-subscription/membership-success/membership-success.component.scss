@@ -1,0 +1,13 @@
+.support-out-icon span {
+  display: inline-block;
+  font-size: 30px;
+  border: 2px solid grayscale($color: #3b3737) ;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  padding-top: 5px;
+  text-align: center;
+  background-color:blue($color: #25af3c);
+  color:blue($color: #5dc499);
+  text-align: center;
+}

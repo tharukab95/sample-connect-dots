@@ -25,6 +25,10 @@ const routes: Routes = [
       path: 'courses',
       loadChildren: () => import(`@tuition/courses`).then(m => m.TuitionFeatureCoursesModule),
      },
+     {
+      path: 'subscriptions',
+      loadChildren: () => import(`@tuition/subscriptions`).then(m => m.TuitionFeatureSubscriptionsModule),
+     },
   ] },
 ];
 

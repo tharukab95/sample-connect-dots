@@ -56,7 +56,7 @@
       "tags": ["tuition", "feature"]
     },
     "tuition-feature-subscriptions": {
-      "tags": ["feature", "subscription"]
+      "tags": ["tuition", "feature"]
     },
     "tuition-ui-main-layout": {
       "tags": ["tuition", "feature"]

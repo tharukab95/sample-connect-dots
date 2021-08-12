@@ -2,6 +2,10 @@ const path = require('path');
 const express = require('express'),
 const asyncHandler = require('express-async-handler');
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+// router.use(passport.authenticate('jwt', { session: false }));
+
 const router = express.Router();
 module.exports = router;
 
@@ -10,15 +14,19 @@ if (env.error) {
   throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
 }
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2020-08-27',
-  appInfo: { // For sample support and debugging, not required for production:
-    name: "stripe-samples/checkout-single-subscription",
-    version: "0.0.1",
-    url: "https://github.com/stripe-samples/checkout-single-subscription"
-  }
-});
-// router.use(passport.authenticate('jwt', { session: false }));
+router.use(express.static(process.env.STATIC_DIR));
+router.use(express.urlencoded());
+router.use(
+  express.json({
+    // We need the raw body to verify webhook signatures.
+    // Let's compute it only when hitting the Stripe webhook endpoint.
+    verify: function (req, res, buf) {
+      if (req.originalUrl.startsWith("/webhook")) {
+        req.rawBody = buf.toString();
+      }
+    },
+  })
+);
 
 router.route('/').get(asyncHandler(getStaticDir));
 
@@ -45,8 +53,10 @@ async function getCheckoutSession (req, res) {
 };
 
 async function createCheckoutSession (req, res) {
-  const domainURL = process.env.DOMAIN;
+  // const domainURL = process.env.DOMAIN;
   const { priceId } = req.body;
+  const { successUrl} = req.body;
+  const { failureUrl } = req.body;
 
   // Create new Checkout Session for the order
   // Other optional params include:
@@ -65,11 +75,11 @@ async function createCheckoutSession (req, res) {
         },
       ],
       // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-      success_url: `${domainURL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${domainURL}/canceled.html`,
+      success_url: `${successUrl}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: failureUrl,
     });
-
-    return res.redirect(303, session.url);
+    return res.send({sessionId: session.id, publicKey: process.env.STRIPE_PUBLISHABLE_KEY});
+    // return res.redirect(300, session.url);
   } catch (e) {
     res.status(400);
     return res.send({
