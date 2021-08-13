@@ -30,9 +30,6 @@
     "api": {
       "tags": []
     },
-    "shared-auth": {
-      "tags": []
-    },
     "shared-data-access": {
       "tags": ["shared", "data-access"]
     },
