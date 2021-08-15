@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
     "shared-data-access": {
       "tags": ["shared", "data-access"]
     },
