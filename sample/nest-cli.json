@@ -8,6 +8,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/tuition/data-access/core-api/tsconfig.lib.json"
       }
+    },
+    "payments-api": {
+      "type": "library",
+      "root": "libs/tuition/data-access/payments-api",
+      "entryFile": "index",
+      "sourceRoot": "libs/tuition/data-access/payments-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/tuition/data-access/payments-api/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {
