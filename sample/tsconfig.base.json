@@ -21,7 +21,6 @@
       "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
       "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
-      "@tuition/data-access": ["libs/tuition/data-access/src/index.ts"],
       "@tuition/subscriptions": [
         "libs/tuition/feature/subscriptions/src/index.ts"
       ]

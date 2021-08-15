@@ -227,31 +227,6 @@
         }
       }
     },
-    "tuition-data-access": {
-      "projectType": "library",
-      "root": "libs/tuition/data-access",
-      "sourceRoot": "libs/tuition/data-access/src",
-      "prefix": "sample",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tuition/data-access"],
-          "options": {
-            "jestConfig": "libs/tuition/data-access/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/tuition/data-access/src/**/*.ts",
-              "libs/tuition/data-access/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "tuition-e2e": {
       "root": "apps/tuition-e2e",
       "sourceRoot": "apps/tuition-e2e/src",

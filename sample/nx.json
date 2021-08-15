@@ -42,9 +42,6 @@
     "tuition": {
       "tags": []
     },
-    "tuition-data-access": {
-      "tags": ["tuition", "data-access"]
-    },
     "tuition-e2e": {
       "tags": [],
       "implicitDependencies": ["tuition"]
