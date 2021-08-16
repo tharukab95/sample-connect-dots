@@ -26,6 +26,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/tuition/data-access/auth-api/tsconfig.lib.json"
       }
+    },
+    "utility": {
+      "type": "library",
+      "root": "libs/tuition/data-access/utility",
+      "entryFile": "index",
+      "sourceRoot": "libs/tuition/data-access/utility/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/tuition/data-access/utility/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {
