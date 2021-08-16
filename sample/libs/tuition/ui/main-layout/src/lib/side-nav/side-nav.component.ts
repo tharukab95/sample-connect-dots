@@ -1,35 +1,98 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
-
+import { AppState } from 'apps/tuition/src/app/reducers';
+import { select, Store } from '@ngrx/store';
+import {
+  isLoggedIn,
+  isLoggedOut,
+} from 'libs/tuition/feature/auth/src/lib/+state/auth.selectors';
+import { login, logout } from 'libs/tuition/feature/auth/src/lib/+state/auth.actions';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 @Component({
   selector: 'sample-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.scss']
+  styleUrls: ['./side-nav.component.scss'],
 })
-export class SideNavComponent {
-  darkModeEnabled: boolean = false;
+export class SideNavComponent implements OnInit {
+  loading = true;
+  darkModeEnabled = false;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isLoggedIn$: Observable<boolean> | undefined;
+  isLoggedOut$: Observable<boolean> | undefined;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
       shareReplay()
     );
 
-    constructor(private breakpointObserver: BreakpointObserver, private titleService: Title) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private titleService: Title,
+    private store: Store<AppState>,
+    private router: Router
+  ) {}
 
-    public setTitle(newTitle: string) {
-      this.titleService.setTitle(newTitle);
+  ngOnInit() {
+    const userProfile = localStorage.getItem('user');
+
+    if (userProfile) {
+      this.store.dispatch(login({ user: JSON.parse(userProfile) }));
     }
 
-    get title() {
-      return this.titleService.getTitle();
-    }
+    this.router.events.subscribe((event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
 
-    switchTheme() {
-      this.darkModeEnabled = !this.darkModeEnabled ;
-    }
+        case event instanceof NavigationEnd: {
+          this.loading = false;
+          break;
+        }
+        case event instanceof NavigationCancel: {
+          this.loading = false;
+          break;
+        }
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
 
+    this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
+
+    this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
+  }
+
+  logout() {
+    this.store.dispatch(logout());
+  }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
+
+  get title() {
+    return this.titleService.getTitle();
+  }
+
+  switchTheme() {
+    this.darkModeEnabled = !this.darkModeEnabled;
+  }
 }

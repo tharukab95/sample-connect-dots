@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'sample-root',
   templateUrl: './app.component.html',
@@ -7,4 +6,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tuition';
+
+  constructor() {}
 }

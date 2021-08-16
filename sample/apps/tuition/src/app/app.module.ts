@@ -18,23 +18,37 @@ import { TuitionUiMainLayoutModule } from '@sample/main-layout';
 import { HomeComponent } from 'libs/tuition/ui/main-layout/src/lib/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
+import { AuthGuard } from 'libs/tuition/feature/auth/src/lib/auth.guard';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, children: [
-    {
-      path: 'login',
-      loadChildren: () => import(`@tuition/auth`).then(m => m.TuitionFeatureAuthModule),
-     },
-    {
-      path: 'courses',
-      loadChildren: () => import(`@tuition/courses`).then(m => m.TuitionFeatureCoursesModule),
-     },
-     {
-      path: 'subscriptions',
-      loadChildren: () => import(`@tuition/subscriptions`).then(m => m.TuitionFeatureSubscriptionsModule),
-     },
-  ] },
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'login',
+        loadChildren: () =>
+          import(`@tuition/auth`).then((m) => m.TuitionFeatureAuthModule),
+      },
+      {
+        path: 'courses',
+        loadChildren: () =>
+          import(`@tuition/courses`).then((m) => m.TuitionFeatureCoursesModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'subscriptions',
+        loadChildren: () =>
+          import(`@tuition/subscriptions`).then(
+            (m) => m.TuitionFeatureSubscriptionsModule
+          ),
+      },
+      {
+        path: '**',
+        redirectTo: '/',
+      },
+    ],
+  },
 ];
 
 @NgModule({
@@ -50,21 +64,23 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     StoreModule.forRoot(reducers, {
       metaReducers,
-      runtimeChecks : {
-          strictStateImmutability: true,
-          strictActionImmutability: true,
-          strictActionSerializability: true,
-          strictStateSerializability:true
-      }
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictActionSerializability: true,
+        strictStateSerializability: true,
+      },
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
-      routerState: RouterState.Minimal
-    })
+      routerState: RouterState.Minimal,
+    }),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

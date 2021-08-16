@@ -1,37 +1,61 @@
-<mat-sidenav-container class="sidenav-container my-light-theme" [class.sample-dark-theme]="darkModeEnabled">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+<mat-sidenav-container
+  class="sidenav-container my-light-theme"
+  [class.sample-dark-theme]="darkModeEnabled"
+>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>ilearn</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="" routerLinkActive="active" (click)="setTitle('Home')">
-        <mat-icon mat-list-icon color="primary" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      <a
+        mat-list-item
+        routerLink="home"
+        routerLinkActive="active"
+        (click)="setTitle('Home')"
+      >
+        <mat-icon
+          mat-list-icon
+          color="primary"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          >home</mat-icon
+        >
         <div mat-line>Home</div>
       </a>
-      <a mat-list-item routerLink="courses" routerLinkActive="active" (click)="setTitle('Courses')">
+      <a mat-list-item routerLink="courses" (click)="setTitle('Courses')">
         <mat-icon mat-list-icon color="accent">explore</mat-icon>
         <div mat-line>Courses</div>
       </a>
-      <a mat-list-item routerLink="subscriptions" routerLinkActive="active" (click)="setTitle('Pricing')">
+      <a mat-list-item routerLink="subscriptions" (click)="setTitle('Pricing')">
         <mat-icon mat-list-icon color="accent">subscriptions</mat-icon>
-        <div mat-line>Subscriptions</div>
+        <div mat-line>Pricing</div>
       </a>
     </mat-nav-list>
     <mat-divider></mat-divider>
     <mat-list>
-      <mat-list-item>
-        <mat-icon mat-list-icon>video_library</mat-icon>
-        <div mat-line>Library</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>history</mat-icon>
-        <div mat-line>History</div>
-      </mat-list-item>
-      <mat-list-item>
+      <a
+        mat-list-item
+        routerLink="login"
+        (click)="setTitle('Login')"
+        *ngIf="isLoggedOut$ | async"
+      >
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+        <div mat-line>Login</div>
+      </a>
+      <a mat-list-item routerLink="" (click)="logout()" *ngIf="isLoggedIn$ | async">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <div mat-line>Logout</div>
+      </a>
+
+      <a mat-list-item>
         <mat-icon mat-list-icon>playlist_play</mat-icon>
         <div mat-line>Playlists</div>
-      </mat-list-item>
+      </a>
       <mat-divider></mat-divider>
       <div mat-subheader>Subscriptions</div>
       <mat-divider></mat-divider>
@@ -70,16 +94,20 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{title}}</span>
+      <span>{{ title }}</span>
       <span class="example-spacer"></span>
-      <mat-slide-toggle class="example-margin"
-      (change)="switchTheme()"></mat-slide-toggle>
+      <mat-slide-toggle
+    class="example-margin"
+    (change)="switchTheme()"
+  ></mat-slide-toggle>
     </mat-toolbar>
-
+  <div class="spinner-container" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
     <ng-content></ng-content>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

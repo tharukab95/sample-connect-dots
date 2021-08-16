@@ -23,7 +23,7 @@ export class StripeSubscriptionService {
         'Up to 5 tutors',
         'Email support',
         '50 students',
-        'Free cancelation',
+        'Free cancellation',
       ],
     },
     {
