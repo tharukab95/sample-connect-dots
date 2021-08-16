@@ -1,5 +1,4 @@
-import { unique } from 'faker';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -9,6 +8,6 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  // @Column()
-  // password: string;
+  @Column()
+  password: string;
 }

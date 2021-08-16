@@ -20,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, children: [
+  {
+    path: '', component: HomeComponent, children: [
+    {
+      path: 'login',
+      loadChildren: () => import(`@tuition/auth`).then(m => m.TuitionFeatureAuthModule),
+     },
     {
       path: 'courses',
       loadChildren: () => import(`@tuition/courses`).then(m => m.TuitionFeatureCoursesModule),
