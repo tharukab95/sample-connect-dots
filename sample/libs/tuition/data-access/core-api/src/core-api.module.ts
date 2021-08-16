@@ -8,7 +8,8 @@ import { LessonModule } from './lesson/lesson.module';
 import { ProfileModule } from './profile/profile.module';
 import { SessionModule } from './session/session.module';
 import { Course } from './course/course.entity';
-
+import { Lesson } from './lesson/lesson.entity';
+import { Connection } from 'typeorm';
 @Module({
   providers: [CoreApiService],
   exports: [CoreApiService],
@@ -18,9 +19,8 @@ import { Course } from './course/course.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
-      database: 'test',
-      // entities: [Course],
+      password: 'Dragon@321',
+      database: 'tuition_core',
       autoLoadEntities: true,
       synchronize: true,
     }),
@@ -32,4 +32,9 @@ import { Course } from './course/course.entity';
     SessionModule,
   ],
 })
-export class CoreApiModule {}
+export class CoreApiModule {
+  // constructor(private connection: Connection) {
+  //   connection.connect();
+  //   console.log("MySql connection status: ", connection.isConnected);
+  // }
+}

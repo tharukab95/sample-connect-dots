@@ -1,22 +1,17 @@
 import {
   Entity,
   Column,
-  CreateDateColumn,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
 import { Lesson } from '../lesson/lesson.entity';
 
-export type CourseCategoryTypes = 'beginner' | 'intermediate' | 'advance';
+export type CourseCategoryTypes = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
 
 @Entity()
 export class Course {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @PrimaryGeneratedColumn()
-  seqNo: number;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
   @Column()
   url: string;
@@ -24,31 +19,38 @@ export class Course {
   @Column()
   iconUrl: string;
 
-  @Column()
+  @Column({ default: '' })
   courseListIcon: string;
+
+  @Column()
+  description: string;
 
   @Column()
   longDescription: string;
 
   @Column({
     type: 'enum',
-    enum: ['beginner', 'intermediate', 'advance'],
+    enum: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'],
     default: 'beginner',
   })
   category: CourseCategoryTypes;
 
-  @Column()
-  lessonsCount: number;
-
-  @Column()
+  @Column({ default: false })
   promo: boolean;
 
-  @CreateDateColumn()
-  public createdAt: Date;
+  @Column({ name: 'created_at', default: () => `now()`, nullable: false })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  public updatedAt: Date;
+  @Column({ name: 'updated_at', default: () => 'now()', nullable: false })
+  updateTime: Date;
 
-  @OneToMany((type) => Lesson, (lesson) => lesson.course)
+  @OneToMany((type) => Lesson, (lesson) => lesson.course, {
+    primary: true,
+    cascade: ['insert'],
+  })
   lessons: Lesson[];
+
+  constructor(partial: Partial<Course>) {
+    Object.assign(this, partial);
+  }
 }

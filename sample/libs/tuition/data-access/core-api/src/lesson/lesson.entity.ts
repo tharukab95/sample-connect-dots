@@ -1,35 +1,38 @@
 import {
   Entity,
   Column,
-  CreateDateColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { Course } from '../course/course.entity';
 
 @Entity()
 export class Lesson {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-  @PrimaryGeneratedColumn()
-  seqNo: number;
-
-  @Column()
+  @Column({ default: null })
   description: string;
 
-  @Column()
+  @Column({ default: null })
   duration: string;
 
-  @Column()
+  @Column({ default: null })
   courseListIcon: string;
 
-  @CreateDateColumn()
-  public createdAt: Date;
+  @Column({ name: 'created_at', default: () => `now()`, nullable: false })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  public updatedAt: Date;
+  @Column({ name: 'updated_at', default: () => 'now()', nullable: false })
+  updateTime: Date;
 
-  @Column()
+  @ManyToOne(() => Course, (course) => course.lessons, {
+    primary: true,
+    cascade: ['insert'],
+  })
   course: Course;
+
+  constructor(partial: Partial<Lesson>) {
+    Object.assign(this, partial);
+  }
 }
