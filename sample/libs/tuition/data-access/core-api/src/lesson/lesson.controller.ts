@@ -11,7 +11,7 @@ import {
 import { Lesson } from './lesson.entity';
 import { LessonService } from './lesson.service';
 
-@Controller('lesson')
+@Controller('lessons')
 export class LessonController {
   constructor(private readonly lessonService: LessonService) {}
 
@@ -20,9 +20,9 @@ export class LessonController {
     return this.lessonService.create(lesson);
   }
 
-  @Get()
-  async findAll(): Promise<Lesson[]> {
-    return this.lessonService.findAll();
+  @Get(':id')
+  async findAll(@Param('id') id): Promise<Lesson[]> {
+    return this.lessonService.findAll(id);
   }
 
   @Put(':id/update')

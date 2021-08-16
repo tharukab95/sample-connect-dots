@@ -30,9 +30,9 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {
 
-    const courseUrl = this.route.snapshot.paramMap.get('courseUrl');
+    const courseId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.course$ = this.coursesService.findCourseByUrl(courseUrl ? courseUrl : '');
+    this.course$ = this.coursesService.findCourseById(courseId ? courseId : -1);
 
     this.lessons$ = this.course$.pipe(
       concatMap(course => this.coursesService.findLessons(course.id)),

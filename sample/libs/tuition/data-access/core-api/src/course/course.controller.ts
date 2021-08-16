@@ -12,7 +12,7 @@ import { Course } from './course.entity';
 import { CreateCourseDto } from './course.interface';
 import { CourseService } from './course.service';
 
-@Controller('course')
+@Controller('courses')
 export class CourseController {
   constructor(private readonly courseService: CourseService) {}
 
@@ -26,6 +26,11 @@ export class CourseController {
   @Get()
   async findAll(): Promise<Course[]> {
     return this.courseService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id): Promise<Course> {
+    return this.courseService.findOne(Number(id));
   }
 
   @Put(':id/update')

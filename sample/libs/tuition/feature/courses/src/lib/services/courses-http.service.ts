@@ -7,39 +7,43 @@ import {map} from "rxjs/operators";
 
 @Injectable()
 export class CoursesHttpService {
+  constructor(private http: HttpClient) {}
 
-    constructor(private http:HttpClient) {
+  findAllCourses(): Observable<Course[]> {
+    return this.http.get<any>('/api/courses').pipe(map((res) => res));
+  }
 
-    }
+  findCourseByUrl(courseUrl: string): Observable<Course> {
+    return this.http.get<Course>(`/api/courses/${courseUrl}`);
+  }
 
-    findAllCourses(): Observable<Course[]> {
-        return this.http.get<any>('/api/courses')
-            .pipe(
-                map(res => res['payload'])
-            );
-    }
+  findCourseById(id: number): Observable<Course> {
+    return this.http.get<Course>(`/api/courses/${id}`);
+  }
 
-    findCourseByUrl(courseUrl: string): Observable<Course> {
-      return this.http.get<Course>(`/api/courses/${courseUrl}`);
-    }
+  findLessons(courseId: number): Observable<Lesson[]> {
+    return this.http.get<Lesson[]>(`/api/lessons/${courseId}`);
+  }
 
-    findLessons(
-        courseId:number,
-        pageNumber = 0, pageSize = 3):  Observable<Lesson[]> {
+  // findLessons(
+  //   courseId: number,
+  //   pageNumber = 0,
+  //   pageSize = 3
+  // ): Observable<Lesson[]> {
+  //   return this.http.get<Lesson[]>('/api/lessons', {
+  //     params: new HttpParams()
+  //       .set('courseId', courseId.toString())
+  //       .set('sortOrder', 'asc')
+  //       .set('pageNumber', pageNumber.toString())
+  //       .set('pageSize', pageSize.toString()),
+  //   });
+  // }
 
-        return this.http.get<Lesson[]>('/api/lessons', {
-            params: new HttpParams()
-                .set('courseId', courseId.toString())
-                .set('sortOrder', 'asc')
-                .set('pageNumber', pageNumber.toString())
-                .set('pageSize', pageSize.toString())
-        });
-    }
+  saveCourse(courseId: string | number, changes: Partial<Course>) {
+    return this.http.post('/api/courses', changes);
+  }
 
-
-    saveCourse(courseId: string | number, changes: Partial<Course>) {
-        return this.http.put('/api/course/' + courseId, changes);
-    }
-
-
+  // saveCourse(courseId: string | number, changes: Partial<Course>) {
+  //   return this.http.put('/api/course/' + courseId, changes);
+  // }
 }

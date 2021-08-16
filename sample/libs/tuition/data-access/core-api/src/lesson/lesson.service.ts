@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, QueryBuilder } from 'typeorm';
 import { Lesson } from './lesson.entity';
 
 @Injectable()
@@ -14,8 +14,13 @@ export class LessonService {
     return await this.lessonRepository.save(lesson);
   }
 
-  findAll(): Promise<Lesson[]> {
-    return this.lessonRepository.find();
+  async findAll(id: number): Promise<Lesson[]> {
+    let lessons = await this.lessonRepository
+      .createQueryBuilder('lesson')
+      .leftJoinAndSelect('lesson.course', 'course')
+      .where('lesson.course = :id', { id: id })
+      .getMany();
+    return lessons;
   }
 
   findOne(id: number): Promise<Lesson> {
