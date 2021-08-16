@@ -1,20 +1,16 @@
 import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
   createReducer,
-  createSelector,
-  MetaReducer,
   on,
 } from '@ngrx/store';
-import { User } from '../model/user.model';
+import { User } from '../model/user';
 import { AuthActions } from './action-types';
 
+
 export interface AuthState {
-  user: User;
+  user: User | undefined;
 }
 
-export const initialAuthState: any = {
+export const initialAuthState: AuthState = {
   user: undefined,
 };
 
