@@ -10,8 +10,9 @@ import {
 } from '@nestjs/common';
 import { Lesson } from './lesson.entity';
 import { LessonService } from './lesson.service';
-
+import { AdminGuard, AuthenticationGuard } from '@tuition/api-utility';
 @Controller('lessons')
+@UseGuards(AuthenticationGuard)
 export class LessonController {
   constructor(private readonly lessonService: LessonService) {}
 

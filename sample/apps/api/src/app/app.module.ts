@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { CoreApiModule } from '@tuition/core-api';
 import { AuthApiModule } from '@tuition/auth-api';
+import { GetUserMiddleware } from '@tuition/api-utility';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -25,4 +26,10 @@ import { AppService } from './app.service';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer
+      .apply(GetUserMiddleware)
+      .forRoutes(CoreApiModule);
+  }
+}

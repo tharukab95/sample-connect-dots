@@ -6,7 +6,6 @@ import { InstituteModule } from './institute/institute.module';
 import { LessonModule } from './lesson/lesson.module';
 import { ProfileModule } from './profile/profile.module';
 import { SessionModule } from './session/session.module';
-
 @Module({
   providers: [CoreApiService],
   exports: [CoreApiService],
