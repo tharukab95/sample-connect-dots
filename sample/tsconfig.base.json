@@ -20,13 +20,16 @@
       "@sample/reactive-form": ["libs/shared/ui/reactive-form/src/index.ts"],
       "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
-      "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
-      "@tuition/subscriptions": [
-        "libs/tuition/feature/subscriptions/src/index.ts"
-      ],
+      "@tuition/auth": ["libs/tuition/feature/auth/src/index.ts"],
       "@tuition/auth-api": ["libs/tuition/data-access/auth-api/src/index.ts"],
       "@tuition/core-api": ["libs/tuition/data-access/core-api/src/index.ts"],
-      "@tuition/payments-api": ["libs/tuition/data-access/payments-api/src/index.ts"]
+      "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
+      "@tuition/payments-api": [
+        "libs/tuition/data-access/payments-api/src/index.ts"
+      ],
+      "@tuition/subscriptions": [
+        "libs/tuition/feature/subscriptions/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

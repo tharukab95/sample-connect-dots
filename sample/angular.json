@@ -253,6 +253,31 @@
         }
       }
     },
+    "tuition-feature-auth": {
+      "projectType": "library",
+      "root": "libs/tuition/feature/auth",
+      "sourceRoot": "libs/tuition/feature/auth/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/feature/auth"],
+          "options": {
+            "jestConfig": "libs/tuition/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/feature/auth/src/**/*.ts",
+              "libs/tuition/feature/auth/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "tuition-feature-courses": {
       "projectType": "library",
       "root": "libs/tuition/feature/courses",
