@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-export type UserRoles = 'unregistered' | 'student' | 'institute_admin' | 'institute_manager' | 'tutor';
+export type UserRoles = 'UNREGISTERED' | 'STUDENT' | 'ADMIN' | 'TUTOR';
 
 @Entity()
 export class User {
@@ -15,14 +15,11 @@ export class User {
 
   @Column({
     type: 'enum',
-    enum: [
-      'unregistered',
-      'student',
-      'institute_admin',
-      'institute_manager',
-      'tutor',
-    ],
-    default: 'unregistered',
+    enum: ['UNREGISTERED', 'STUDENT', 'ADMIN', 'TUTOR'],
+    default: 'UNREGISTERED',
   })
   role: UserRoles;
+
+  @Column({ default: true })
+  isActive: boolean;
 }

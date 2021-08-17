@@ -13,31 +13,34 @@ import { AppModule } from './app/app.module';
 import { FallbackExceptionFilter } from './app/filters/fallback.filter';
 import { HttpExceptionFilter } from './app/filters/http.filter';
 
+import * as helmet from 'helmet';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 
+  app.use(helmet());
 
-    app.useGlobalFilters(
-      new FallbackExceptionFilter(),
-      new HttpExceptionFilter(),
-      new ValidationFilter()
-    );
+  app.useGlobalFilters(
+    new FallbackExceptionFilter(),
+    new HttpExceptionFilter(),
+    new ValidationFilter()
+  );
 
-    app.useGlobalPipes(
-      new ValidationPipe({
-        skipMissingProperties: true,
-        exceptionFactory: (errors: ValidationError[]) => {
-          const messages = errors.map(
-            (error) => `${error.property} has wrong value ${error.value},
+  app.useGlobalPipes(
+    new ValidationPipe({
+      skipMissingProperties: true,
+      exceptionFactory: (errors: ValidationError[]) => {
+        const messages = errors.map(
+          (error) => `${error.property} has wrong value ${error.value},
                 ${Object.values(error.constraints).join(', ')} `
-          );
+        );
 
-          return new ValidationException(messages);
-        },
-      })
-    );
+        return new ValidationException(messages);
+      },
+    })
+  );
 
   const port = process.env.PORT || 3000;
   await app.listen(port, () => {

@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { CoreApiModule } from '@tuition/core-api';
 import { AuthApiModule } from '@tuition/auth-api';
-import { GetUserMiddleware } from '@tuition/api-utility';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { GetUserMiddleware } from '@tuition/api-utility';
 
 @Module({
   imports: [
@@ -22,14 +23,16 @@ import { AppService } from './app.service';
     }),
     CoreApiModule,
     AuthApiModule,
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer
-      .apply(GetUserMiddleware)
-      .forRoutes(CoreApiModule);
+    consumer.apply(GetUserMiddleware).forRoutes(CoreApiModule);
   }
 }

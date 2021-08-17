@@ -11,15 +11,12 @@ import {
 import { Course } from './course.entity';
 import { CreateCourseDto } from './course.interface';
 import { CourseService } from './course.service';
-import { AdminGuard, AuthenticationGuard } from '@tuition/api-utility;
 
 @Controller('courses')
-@UseGuards(AuthenticationGuard)
 export class CourseController {
   constructor(private readonly courseService: CourseService) {}
 
   @Post()
-  @UseGuards(AdminGuard)
   async create(
     @Body() createCourseDto: CreateCourseDto
   ): Promise<CreateCourseDto> {
@@ -37,7 +34,6 @@ export class CourseController {
   }
 
   @Put(':id/update')
-  @UseGuards(AdminGuard)
   async update(@Param('id') id, @Body() course: Course): Promise<any> {
     course.id = Number(id);
     console.log('Update #' + course.id);
@@ -45,7 +41,6 @@ export class CourseController {
   }
 
   @Delete('/:id/delete')
-  @UseGuards(AdminGuard)
   async delete(@Param('id') id) {
     await this.courseService.delete(Number(id));
   }
