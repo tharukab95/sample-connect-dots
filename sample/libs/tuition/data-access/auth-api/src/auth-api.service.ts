@@ -4,6 +4,7 @@ import { UserService } from './user/user.service';
 import * as bcrypt from 'bcrypt';
 import { User } from './user/entities/user.entity';
 import { jwtSecret } from './constants';
+import { AuthResDto } from './auth-res.dto';
 
 @Injectable()
 export class AuthApiService {
@@ -28,13 +29,18 @@ export class AuthApiService {
     return result;
   }
 
-  login(user: User): { access_token: string } {
+  async login(user: User): Promise<AuthResDto> {
+    const authUser = await this.userService.getUserByEmail(user.email);
+
     const payload = {
-      email: user.email,
-      userId: user.id,
+      email: authUser.email,
+      userId: authUser.id,
     };
 
+    const { password, ...result } = authUser;
+
     return {
+      user: result,
       access_token: this.jwtService.sign(payload),
     };
   }

@@ -47,7 +47,12 @@
         <mat-icon mat-list-icon>account_circle</mat-icon>
         <div mat-line>Login</div>
       </a>
-      <a mat-list-item routerLink="" (click)="logout()" *ngIf="isLoggedIn$ | async">
+      <a
+        mat-list-item
+        routerLink=""
+        (click)="logout()"
+        *ngIf="isLoggedIn$ | async"
+      >
         <mat-icon mat-list-icon>exit_to_app</mat-icon>
         <div mat-line>Logout</div>
       </a>
@@ -101,13 +106,16 @@
       <span>{{ title }}</span>
       <span class="example-spacer"></span>
       <mat-slide-toggle
-    class="example-margin"
-    (change)="switchTheme()"
-  ></mat-slide-toggle>
+        class="example-margin"
+        (change)="switchTheme()"
+      ></mat-slide-toggle>
     </mat-toolbar>
-  <div class="spinner-container" *ngIf="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-    <ng-content></ng-content>
+
+    <ng-content *ngIf="!loading; else spinner"></ng-content>
+    <ng-template #spinner>
+      <div class="spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>

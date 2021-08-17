@@ -41,14 +41,21 @@ export class SideNavComponent implements OnInit {
     private titleService: Title,
     private store: Store<AppState>,
     private router: Router
-  ) {}
+  ) {
+    // this.loading = false;
+  }
 
   ngOnInit() {
-    const userProfile = localStorage.getItem('user');
+    this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
 
-    if (userProfile) {
-      this.store.dispatch(login({ user: JSON.parse(userProfile) }));
-    }
+    this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
+
+    const access_token = localStorage.getItem('access_token');
+    console.log('access_token', access_token);
+
+    // if (access_token) {
+    //   this.store.dispatch(login({ user_data: JSON.parse(access_token) }));
+    // }
 
     this.router.events.subscribe((event) => {
       switch (true) {
@@ -75,9 +82,7 @@ export class SideNavComponent implements OnInit {
       }
     });
 
-    this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
 
-    this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
   }
 
   logout() {

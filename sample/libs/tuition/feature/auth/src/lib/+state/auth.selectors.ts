@@ -5,7 +5,7 @@ export const selectAuthState = createFeatureSelector<AuthState>('auth');
 
 export const isLoggedIn = createSelector(
   selectAuthState,
-  (auth) => !!auth.user
+  (auth) => !!auth.userAccessData?.access_token
 );
 
 export const isLoggedOut = createSelector(isLoggedIn, (loggedIn) => !loggedIn);

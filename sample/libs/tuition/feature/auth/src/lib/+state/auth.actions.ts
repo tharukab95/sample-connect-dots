@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../model/user';
+import { LoginResponseDto } from '../model/login-response.dto';
 
 export const login = createAction(
   '[Login Page] User Login',
-  props<{ user: User }>()
+  props<LoginResponseDto>()
 );
 
 export const logout = createAction('[Top Menu] Logout');

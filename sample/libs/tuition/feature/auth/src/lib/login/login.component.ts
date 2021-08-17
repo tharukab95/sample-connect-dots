@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AppState } from 'apps/tuition/src/app/reducers/index';
 import { login } from '../+state/auth.actions';
 import { AuthActions } from '../+state/action-types';
+import { LoginResponseDto } from '../model/login-response.dto';
 
 @Component({
   selector: 'login',
@@ -39,10 +40,10 @@ export class LoginComponent implements OnInit {
     this.auth
       .login(val.email, val.password)
       .pipe(
-        tap((user) => {
-          console.log(user);
+        tap((userAccessData: LoginResponseDto) => {
+          console.log(userAccessData);
 
-          this.store.dispatch(login({ user }));
+          this.store.dispatch(login(userAccessData));
 
           this.router.navigateByUrl('/courses');
         })

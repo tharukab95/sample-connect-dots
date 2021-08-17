@@ -33,6 +33,6 @@ import { GetUserMiddleware } from '@tuition/api-utility';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(GetUserMiddleware).forRoutes(CoreApiModule);
+    consumer.apply(GetUserMiddleware).forRoutes(CoreApiModule, AuthApiModule);
   }
 }

@@ -2,16 +2,16 @@ import {
   createReducer,
   on,
 } from '@ngrx/store';
-import { User } from '../model/user';
+import { LoginResponseDto } from '../model/login-response.dto';
 import { AuthActions } from './action-types';
 
 
 export interface AuthState {
-  user: User | undefined;
+  userAccessData: LoginResponseDto | null;
 }
 
 export const initialAuthState: AuthState = {
-  user: undefined,
+  userAccessData: null,
 };
 
 export const authReducer = createReducer(
@@ -19,13 +19,13 @@ export const authReducer = createReducer(
 
   on(AuthActions.login, (state, action) => {
     return {
-      user: action.user,
+      userAccessData: action,
     };
   }),
 
   on(AuthActions.logout, (state, action) => {
     return {
-      user: undefined,
+      userAccessData: null,
     };
   })
 );
