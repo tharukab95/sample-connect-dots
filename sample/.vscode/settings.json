@@ -4,7 +4,19 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
-  "cSpell.words": ["ilearn", "nestjs", "serializability", "sidenav", "varchar"],
+  "cSpell.words": [
+    "bootswatch",
+    "devkit",
+    "fontawesome",
+    "fortawesome",
+    "ilearn",
+    "nestjs",
+    "ngcc",
+    "nrwl",
+    "serializability",
+    "sidenav",
+    "varchar"
+  ],
   "cSpell.ignoreWords": [
     "cd",
     "e",
