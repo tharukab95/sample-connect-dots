@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
     private store: Store<AppState>
   ) {
     this.form = fb.group({
-      email: ['test@angular-university.io', [Validators.required]],
-      password: ['test', [Validators.required]],
+      email: ['tharukabandara95@gmail.com', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
           this.store.dispatch(login(userAccessData));
 
-          this.router.navigateByUrl('/courses');
+          this.router.navigateByUrl('courses');
         })
       )
       .subscribe(noop, () => alert('Login Failed'));

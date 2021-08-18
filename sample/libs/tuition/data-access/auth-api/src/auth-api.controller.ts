@@ -5,6 +5,7 @@ import { AuthApiService } from './auth-api.service';
 import { User } from './user/entities/user.entity';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthResDto } from './auth-res.dto';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 @Controller('auth')
 
 

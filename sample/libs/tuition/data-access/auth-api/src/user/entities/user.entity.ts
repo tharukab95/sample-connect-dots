@@ -1,24 +1,42 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import * as bcrypt from 'bcrypt';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 
-export type UserRoles = 'UNREGISTERED' | 'STUDENT' | 'ADMIN' | 'TUTOR';
+export type UserType = 'UNREGISTERED' | 'STUDENT' | 'ADMIN' | 'TUTOR';
+
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('uuid') id: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    unique: true,
+  })
+  username: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
   email: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
   password: string;
+
+  @BeforeInsert() async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 
   @Column({
     type: 'enum',
     enum: ['UNREGISTERED', 'STUDENT', 'ADMIN', 'TUTOR'],
     default: 'UNREGISTERED',
   })
-  role: UserRoles;
+  role: UserType;
 
   @Column({ default: true })
   isActive: boolean;

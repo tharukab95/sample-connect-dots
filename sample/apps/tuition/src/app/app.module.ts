@@ -42,11 +42,7 @@ const routes: Routes = [
           import(`@tuition/subscriptions`).then(
             (m) => m.TuitionFeatureSubscriptionsModule
           ),
-      },
-      {
-        path: '**',
-        redirectTo: '/',
-      },
+      }
     ],
   },
 ];
