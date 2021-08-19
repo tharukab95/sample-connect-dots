@@ -303,6 +303,31 @@
         }
       }
     },
+    "tuition-feature-profile": {
+      "projectType": "library",
+      "root": "libs/tuition/feature/profile",
+      "sourceRoot": "libs/tuition/feature/profile/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/feature/profile"],
+          "options": {
+            "jestConfig": "libs/tuition/feature/profile/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/feature/profile/src/**/*.ts",
+              "libs/tuition/feature/profile/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "tuition-feature-subscriptions": {
       "projectType": "library",
       "root": "libs/tuition/feature/subscriptions",
