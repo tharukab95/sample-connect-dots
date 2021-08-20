@@ -14,7 +14,7 @@
     <mat-nav-list>
       <a
         mat-list-item
-        routerLink="home"
+        routerLink="/home"
         routerLinkActive="active"
         (click)="setTitle('Home')"
       >
@@ -111,11 +111,11 @@
       ></mat-slide-toggle>
     </mat-toolbar>
 
-    <ng-content *ngIf="!loading; else spinner"></ng-content>
-    <ng-template #spinner>
+    <ng-content></ng-content>
+    <!-- <ng-template #spinner>
       <div class="spinner-container">
         <mat-spinner></mat-spinner>
       </div>
-    </ng-template>
+    </ng-template> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

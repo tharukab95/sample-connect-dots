@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './model/user';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -12,5 +13,12 @@ export class AuthService {
       email: email,
       password: password,
     });
+  }
+
+  register(user: User) {
+    return this.http.post<any>('/api/users', user).pipe(
+      tap((user) => console.log(user)),
+      map((user) => user)
+    );
   }
 }

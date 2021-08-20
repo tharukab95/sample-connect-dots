@@ -3,17 +3,16 @@ import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 
 export type UserType = 'UNREGISTERED' | 'STUDENT' | 'ADMIN' | 'TUTOR';
 
-
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid') id: string;
 
-  @Column({
-    type: 'varchar',
-    nullable: false,
-    unique: true,
-  })
-  username: string;
+  // @Column({
+  //   type: 'varchar',
+  //   nullable: false,
+  //   unique: true,
+  // })
+  // username: string;
 
   @Column({
     type: 'varchar',

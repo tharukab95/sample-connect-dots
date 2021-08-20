@@ -9,5 +9,6 @@ import { RouterModule } from '@angular/router';
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
     ]),
   ],
+  providers: [],
 })
 export class TuitionFeatureProfileModule {}

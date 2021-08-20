@@ -35,6 +35,6 @@ import { HeaderComponent } from './header/header.component';
     MatProgressSpinnerModule,
   ],
   declarations: [HomeComponent, SideNavComponent, HeaderComponent],
-  exports: [HomeComponent, SideNavComponent],
+  exports: [HomeComponent, SideNavComponent, HeaderComponent],
 })
 export class TuitionUiMainLayoutModule {}
