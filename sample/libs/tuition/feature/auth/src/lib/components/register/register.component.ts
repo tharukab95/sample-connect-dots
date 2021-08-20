@@ -6,7 +6,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 

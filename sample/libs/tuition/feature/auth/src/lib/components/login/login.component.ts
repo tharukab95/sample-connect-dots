@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { tap } from 'rxjs/operators';
 import { noop } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppState } from 'apps/tuition/src/app/reducers/index';
-import { login } from '../+state/auth.actions';
-import { AuthActions } from '../+state/action-types';
-import { LoginResponseDto } from '../model/login-response.dto';
+import { login } from '../../+state/auth.actions';
+import { LoginResponseDto } from '../../models/login-response.dto';
 
 @Component({
   selector: 'login',

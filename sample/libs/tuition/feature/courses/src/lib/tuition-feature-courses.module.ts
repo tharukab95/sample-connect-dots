@@ -6,25 +6,25 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoursesEffects } from './+state/courses/courses.effects';
 import { CoursesResolver } from './courses.resolver';
 
-import {HomeComponent} from './home/home.component';
-import {CoursesCardListComponent} from './courses-card-list/courses-card-list.component';
-import {EditCourseDialogComponent} from './edit-course-dialog/edit-course-dialog.component';
-import {CoursesHttpService} from './services/courses-http.service';
-import {CourseComponent} from './course/course.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTableModule} from '@angular/material/table';
-import {MatTabsModule} from '@angular/material/tabs';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { HomeComponent } from './components/home/home.component';
+import { CoursesCardListComponent } from './components/courses-card-list/courses-card-list.component';
+import { EditCourseDialogComponent } from './components/edit-course-dialog/edit-course-dialog.component';
+import { CoursesHttpService } from './services/courses-http.service';
+import { CourseComponent } from './components/course/course.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { coursesReducer } from './+state/courses/courses.reducer';
 
 export const coursesRoutes: Routes = [
@@ -32,14 +32,13 @@ export const coursesRoutes: Routes = [
     path: '',
     component: HomeComponent,
     resolve: {
-        courses: CoursesResolver
-    }
-
+      courses: CoursesResolver,
+    },
   },
   {
     path: ':id',
-    component: CourseComponent
-  }
+    component: CourseComponent,
+  },
 ];
 
 @NgModule({
@@ -61,28 +60,23 @@ export const coursesRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(coursesRoutes),
     EffectsModule.forFeature([CoursesEffects]),
-    StoreModule.forFeature("courses", coursesReducer)
+    StoreModule.forFeature('courses', coursesReducer),
   ],
   declarations: [
     HomeComponent,
     CoursesCardListComponent,
     EditCourseDialogComponent,
-    CourseComponent
+    CourseComponent,
   ],
   exports: [
     HomeComponent,
     CoursesCardListComponent,
     EditCourseDialogComponent,
-    CourseComponent
+    CourseComponent,
   ],
   entryComponents: [EditCourseDialogComponent],
-  providers: [
-    CoursesHttpService,
-    CoursesResolver
-  ]
+  providers: [CoursesHttpService, CoursesResolver],
 })
 export class TuitionFeatureCoursesModule {
-  constructor() {
-
-  }
+  constructor() {}
 }

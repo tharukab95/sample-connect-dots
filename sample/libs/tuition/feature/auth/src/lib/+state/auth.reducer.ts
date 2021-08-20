@@ -1,10 +1,6 @@
-import {
-  createReducer,
-  on,
-} from '@ngrx/store';
-import { LoginResponseDto } from '../model/login-response.dto';
+import { createReducer, on } from '@ngrx/store';
+import { LoginResponseDto } from '../models/login-response.dto';
 import { AuthActions } from './action-types';
-
 
 export interface AuthState {
   userAccessData: LoginResponseDto | null;
