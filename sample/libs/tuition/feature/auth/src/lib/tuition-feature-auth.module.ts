@@ -28,6 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     MatFormFieldModule,
     RouterModule.forChild([
       { path: '', component: LoginComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ]),
     StoreModule.forFeature('auth', authReducer),

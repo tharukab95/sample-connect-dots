@@ -27,11 +27,15 @@
         >
         <div mat-line>Home</div>
       </a>
-      <a mat-list-item routerLink="courses" (click)="setTitle('Courses')">
+      <a mat-list-item routerLink="/courses" (click)="setTitle('Courses')">
         <mat-icon mat-list-icon color="accent">explore</mat-icon>
         <div mat-line>Courses</div>
       </a>
-      <a mat-list-item routerLink="subscriptions" (click)="setTitle('Pricing')">
+      <a
+        mat-list-item
+        routerLink="/subscriptions"
+        (click)="setTitle('Pricing')"
+      >
         <mat-icon mat-list-icon color="accent">subscriptions</mat-icon>
         <div mat-line>Pricing</div>
       </a>
@@ -40,7 +44,7 @@
     <mat-list>
       <a
         mat-list-item
-        routerLink="login"
+        routerLink="/login"
         (click)="setTitle('Login')"
         *ngIf="isLoggedOut$ | async"
       >
@@ -110,8 +114,10 @@
         (change)="switchTheme()"
       ></mat-slide-toggle>
     </mat-toolbar>
+    <section class="bubble">
+      <ng-content></ng-content>
+    </section>
 
-    <ng-content></ng-content>
     <!-- <ng-template #spinner>
       <div class="spinner-container">
         <mat-spinner></mat-spinner>
