@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'auth-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './auth-home.component.html',
+  styleUrls: ['./auth-home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class AuthHomeComponent implements OnInit {
 
   constructor() { }
 

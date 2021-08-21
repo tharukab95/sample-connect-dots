@@ -9,7 +9,10 @@ import {
   isLoggedIn,
   isLoggedOut,
 } from 'libs/tuition/feature/auth/src/lib/+state/auth.selectors';
-import { login, logout } from 'libs/tuition/feature/auth/src/lib/+state/auth.actions';
+import {
+  login,
+  logout,
+} from 'libs/tuition/feature/auth/src/lib/+state/auth.actions';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -81,8 +84,6 @@ export class SideNavComponent implements OnInit {
         }
       }
     });
-
-
   }
 
   logout() {

@@ -15,7 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './+state/auth.effects';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
-import { HomeComponent } from './components/home/home.component';
+import { AuthHomeComponent } from './components/auth-home/auth-home.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,15 +27,20 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     MatFormFieldModule,
     RouterModule.forChild([
-      { path: '', component: LoginComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      {
+        path: '',
+        component: AuthHomeComponent,
+        children: [
+          { path: 'login', component: LoginComponent },
+          { path: 'register', component: RegisterComponent },
+        ],
+      },
     ]),
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],
-  declarations: [LoginComponent, RegisterComponent, HomeComponent],
-  exports: [LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [LoginComponent, RegisterComponent, AuthHomeComponent],
+  exports: [AuthHomeComponent],
   providers: [AuthService, AuthGuard],
 })
 export class TuitionFeatureAuthModule {

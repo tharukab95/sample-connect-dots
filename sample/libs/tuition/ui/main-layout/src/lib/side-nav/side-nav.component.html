@@ -114,14 +114,14 @@
         (change)="switchTheme()"
       ></mat-slide-toggle>
     </mat-toolbar>
-    <section class="bubble">
-      <ng-content></ng-content>
-    </section>
 
-    <!-- <ng-template #spinner>
+      <ng-content *ngIf="spinner"></ng-content>
+
+
+    <ng-template #spinner>
       <div class="spinner-container">
         <mat-spinner></mat-spinner>
       </div>
-    </ng-template> -->
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
