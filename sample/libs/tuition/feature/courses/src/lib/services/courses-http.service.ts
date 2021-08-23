@@ -9,7 +9,9 @@ export class CoursesHttpService {
   constructor(private http: HttpClient) {}
 
   findAllCourses(): Observable<Course[]> {
-    return this.http.get<any>('/api/courses').pipe(map((res) => res));
+    return this.http
+      .get<any>('/api/courses')
+      .pipe(map((res) => res));
   }
 
   findCourseByUrl(courseUrl: string): Observable<Course> {

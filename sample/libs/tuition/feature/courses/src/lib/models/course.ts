@@ -6,7 +6,7 @@ export interface Course {
   description?: string;
   longDescription?: string;
   category: string;
-
+  payButtonClicked: false;
   promo?: boolean;
 }
 

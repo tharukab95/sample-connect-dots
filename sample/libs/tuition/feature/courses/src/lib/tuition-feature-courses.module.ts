@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { TuitionUiPayButtonsModule } from '@tuition/pay-buttons';
+
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -44,6 +46,7 @@ export const coursesRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    TuitionUiPayButtonsModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,

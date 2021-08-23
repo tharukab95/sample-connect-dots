@@ -30,6 +30,9 @@
     "api": {
       "tags": []
     },
+    "payout": {
+      "tags": ["payout"]
+    },
     "shared-data-access": {
       "tags": ["shared", "data-access"]
     },
@@ -38,6 +41,9 @@
     },
     "shared-ui-table": {
       "tags": ["shared", "ui"]
+    },
+    "tuiion-feature-membership": {
+      "tags": ["tuition", "feature"]
     },
     "tuition": {
       "tags": []
@@ -52,14 +58,20 @@
     "tuition-feature-courses": {
       "tags": ["tuition", "feature"]
     },
-    "tuition-feature-pricing": {
-      "tags": ["tuition", "feature"]
-    },
     "tuition-feature-profile": {
       "tags": ["tuition", "feature"]
     },
+    "tuition-feature-subscriptions": {
+      "tags": ["tuition", "feature"]
+    },
+    "tuition-ui-cards": {
+      "tags": ["tuition", "ui"]
+    },
     "tuition-ui-main-layout": {
       "tags": ["tuition", "feature"]
+    },
+    "tuition-ui-pay-buttons": {
+      "tags": ["tuition", "ui"]
     }
   }
 }

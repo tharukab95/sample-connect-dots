@@ -13,8 +13,13 @@ export class CoursesCardListComponent implements OnInit {
   @Input()
   courses: Course[] | undefined;
 
+  selectedCourseUrl = '';
+
   @Output()
   courseChanged = new EventEmitter();
+
+  currentIndex = -1;
+  showPayOptions = false;
 
   constructor(private dialog: MatDialog) {}
 
@@ -36,4 +41,15 @@ export class CoursesCardListComponent implements OnInit {
   }
 
   onDeleteCourse(course: Course) {}
+
+  toggleShowPayOptions(index: any, buttonClicked: boolean) {
+    console.log(index);
+    if (this.currentIndex !== -1) {
+      this.currentIndex = index;
+      return false;
+    } else if (this.currentIndex === index && buttonClicked) {
+      return false;
+    }
+    return true;
+  }
 }

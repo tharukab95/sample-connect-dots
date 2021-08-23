@@ -51,6 +51,56 @@
         }
       }
     },
+    "payout": {
+      "root": "apps/payout",
+      "sourceRoot": "apps/payout/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/payout",
+            "main": "apps/payout/src/main.js",
+            "tsConfig": "apps/payout/tsconfig.app.json",
+            "assets": ["apps/payout/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/payout/src/environments/environment.js",
+                  "with": "apps/payout/src/environments/environment.prod.js"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "payout:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/payout/**/*.js"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/payout"],
+          "options": {
+            "jestConfig": "apps/payout/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-data-access": {
       "projectType": "library",
       "root": "libs/shared/data-access",
@@ -121,6 +171,31 @@
             "lintFilePatterns": [
               "libs/shared/ui/table/src/**/*.ts",
               "libs/shared/ui/table/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "tuiion-feature-membership": {
+      "projectType": "library",
+      "root": "libs/tuiion/feature/membership",
+      "sourceRoot": "libs/tuiion/feature/membership/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuiion/feature/membership"],
+          "options": {
+            "jestConfig": "libs/tuiion/feature/membership/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuiion/feature/membership/src/**/*.ts",
+              "libs/tuiion/feature/membership/src/**/*.html"
             ]
           }
         }
@@ -303,31 +378,6 @@
         }
       }
     },
-    "tuition-feature-pricing": {
-      "projectType": "library",
-      "root": "libs/tuition/feature/pricing",
-      "sourceRoot": "libs/tuition/feature/pricing/src",
-      "prefix": "sample",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tuition/feature/pricing"],
-          "options": {
-            "jestConfig": "libs/tuition/feature/pricing/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/tuition/feature/pricing/src/**/*.ts",
-              "libs/tuition/feature/pricing/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "tuition-feature-profile": {
       "projectType": "library",
       "root": "libs/tuition/feature/profile",
@@ -353,6 +403,72 @@
         }
       }
     },
+    "tuition-feature-subscriptions": {
+      "projectType": "library",
+      "root": "libs/tuition/feature/subscriptions",
+      "sourceRoot": "libs/tuition/feature/subscriptions/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/feature/subscriptions"],
+          "options": {
+            "jestConfig": "libs/tuition/feature/subscriptions/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/feature/subscriptions/src/**/*.ts",
+              "libs/tuition/feature/subscriptions/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "tuition-ui-cards": {
+      "projectType": "library",
+      "root": "libs/tuition/ui/cards",
+      "sourceRoot": "libs/tuition/ui/cards/src",
+      "prefix": "nxgep",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/tuition/ui/cards"],
+          "options": {
+            "project": "libs/tuition/ui/cards/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/tuition/ui/cards/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/tuition/ui/cards/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/ui/cards"],
+          "options": {
+            "jestConfig": "libs/tuition/ui/cards/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/ui/cards/src/**/*.ts",
+              "libs/tuition/ui/cards/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "tuition-ui-main-layout": {
       "projectType": "library",
       "root": "libs/tuition/ui/main-layout",
@@ -373,6 +489,31 @@
             "lintFilePatterns": [
               "libs/tuition/ui/main-layout/src/**/*.ts",
               "libs/tuition/ui/main-layout/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "tuition-ui-pay-buttons": {
+      "projectType": "library",
+      "root": "libs/tuition/ui/pay-buttons",
+      "sourceRoot": "libs/tuition/ui/pay-buttons/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/ui/pay-buttons"],
+          "options": {
+            "jestConfig": "libs/tuition/ui/pay-buttons/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/ui/pay-buttons/src/**/*.ts",
+              "libs/tuition/ui/pay-buttons/src/**/*.html"
             ]
           }
         }

@@ -19,11 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from 'libs/tuition/feature/auth/src/lib/auth.guard';
 import { HomeComponent } from 'libs/tuition/ui/main-layout/src/lib/home/home.component';
 import { AuthHomeComponent } from 'libs/tuition/feature/auth/src/lib/components/auth-home/auth-home.component';
+import { PaypalComponent } from 'libs/tuition/ui/pay-buttons/src/lib/paypal/paypal.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: AuthHomeComponent,
+  },
+  {
+    path: 'purchase',
+    component: PaypalComponent,
   },
   {
     path: '',
@@ -44,7 +49,9 @@ const routes: Routes = [
       {
         path: 'pricing',
         loadChildren: () =>
-          import(`@tuition/pricing`).then((m) => m.TuitionFeaturePricingModule),
+          import(`@tuition/pricing`).then(
+            (m) => m.TuiionFeatureMembershipModule
+          ),
       },
     ],
   },

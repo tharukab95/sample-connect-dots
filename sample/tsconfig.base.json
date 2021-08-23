@@ -20,13 +20,22 @@
       "@sample/reactive-form": ["libs/shared/ui/reactive-form/src/index.ts"],
       "@sample/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@sample/table": ["libs/shared/ui/table/src/index.ts"],
-
+      "@sample/tuiion-feature-membership": [
+        "libs/tuiion/feature/membership/src/index.ts"
+      ],
+      "@sample/tuition/feature/subscriptions": [
+        "libs/tuition/feature/subscriptions/src/index.ts"
+      ],
+      "@sample/tuition/ui/cards": ["libs/tuition/ui/cards/src/index.ts"],
+      "@sample/tuition/ui/pay-buttons": [
+        "libs/tuition/ui/pay-buttons/src/index.ts"
+      ],
       "@tuition/api-utility": ["libs/tuition/data-access/utility/src/index.ts"],
       "@tuition/auth": ["libs/tuition/feature/auth/src/index.ts"],
       "@tuition/auth-api": ["libs/tuition/data-access/auth-api/src/index.ts"],
       "@tuition/core-api": ["libs/tuition/data-access/core-api/src/index.ts"],
       "@tuition/courses": ["libs/tuition/feature/courses/src/index.ts"],
-      "@tuition/pricing": ["libs/tuition/feature/pricing/src/index.ts"],
+      "@tuition/pay-buttons": ["libs/tuition/ui/pay-buttons/src/index.ts"],
       "@tuition/payments-api": [
         "libs/tuition/data-access/payments-api/src/index.ts"
       ],

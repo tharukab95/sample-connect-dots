@@ -1,0 +1,12 @@
+<mat-card class="course-card mat-elevation-z10">
+  <div *ngIf="!paidFor">
+    <img mat-card-image [src]="iconUrl" />
+    <h1>Buy this Course - ${{ product.price }}</h1>
+  </div>
+
+  <div *ngIf="paidFor">
+    <h1>Congratulations, you have now access to this course!</h1>
+  </div>
+
+  <div #paypal></div>
+</mat-card>
