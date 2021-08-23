@@ -303,6 +303,31 @@
         }
       }
     },
+    "tuition-feature-pricing": {
+      "projectType": "library",
+      "root": "libs/tuition/feature/pricing",
+      "sourceRoot": "libs/tuition/feature/pricing/src",
+      "prefix": "sample",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tuition/feature/pricing"],
+          "options": {
+            "jestConfig": "libs/tuition/feature/pricing/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tuition/feature/pricing/src/**/*.ts",
+              "libs/tuition/feature/pricing/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "tuition-feature-profile": {
       "projectType": "library",
       "root": "libs/tuition/feature/profile",
@@ -323,31 +348,6 @@
             "lintFilePatterns": [
               "libs/tuition/feature/profile/src/**/*.ts",
               "libs/tuition/feature/profile/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "tuition-feature-subscriptions": {
-      "projectType": "library",
-      "root": "libs/tuition/feature/subscriptions",
-      "sourceRoot": "libs/tuition/feature/subscriptions/src",
-      "prefix": "sample",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tuition/feature/subscriptions"],
-          "options": {
-            "jestConfig": "libs/tuition/feature/subscriptions/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/tuition/feature/subscriptions/src/**/*.ts",
-              "libs/tuition/feature/subscriptions/src/**/*.html"
             ]
           }
         }

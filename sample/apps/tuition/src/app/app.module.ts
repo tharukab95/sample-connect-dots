@@ -16,10 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CommonModule } from '@angular/common';
 import { TuitionUiMainLayoutModule } from '@sample/main-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { SideNavComponent } from 'libs/tuition/ui/main-layout/src/lib/side-nav/side-nav.component';
 import { AuthGuard } from 'libs/tuition/feature/auth/src/lib/auth.guard';
-import { LoginComponent } from 'libs/tuition/feature/auth/src/lib/components/login/login.component';
-import { RegisterComponent } from 'libs/tuition/feature/auth/src/lib/components/register/register.component';
 import { HomeComponent } from 'libs/tuition/ui/main-layout/src/lib/home/home.component';
 import { AuthHomeComponent } from 'libs/tuition/feature/auth/src/lib/components/auth-home/auth-home.component';
 
@@ -45,11 +42,9 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'subscriptions',
+        path: 'pricing',
         loadChildren: () =>
-          import(`@tuition/subscriptions`).then(
-            (m) => m.TuitionFeatureSubscriptionsModule
-          ),
+          import(`@tuition/pricing`).then((m) => m.TuitionFeaturePricingModule),
       },
     ],
   },

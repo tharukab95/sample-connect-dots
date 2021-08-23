@@ -52,10 +52,10 @@
     "tuition-feature-courses": {
       "tags": ["tuition", "feature"]
     },
-    "tuition-feature-profile": {
+    "tuition-feature-pricing": {
       "tags": ["tuition", "feature"]
     },
-    "tuition-feature-subscriptions": {
+    "tuition-feature-profile": {
       "tags": ["tuition", "feature"]
     },
     "tuition-ui-main-layout": {
