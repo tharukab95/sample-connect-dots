@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #042552;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 8%;
+  position: relative;
+  z-index: 1;
+}
+
+.col {
+  padding: 0 20px;
+  width: 33.33%;
+}
+
+.grid:after {
+  display: inline-flex;
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  z-index: -1;
+  background: linear-gradient(150deg, #67cfff 0% #ff67f9 100%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}

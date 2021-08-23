@@ -17,6 +17,7 @@
     "nestjs",
     "ngcc",
     "nrwl",
+    "nxgep",
     "serializability",
     "sidenav",
     "varchar"
@@ -24,6 +25,7 @@
   "cSpell.ignoreWords": [
     "cacheable",
     "cd",
+    "chainable",
     "controller",
     "e",
     "g",

@@ -49,4 +49,4 @@ const routes: Routes = [
     PricingPlansService,
   ],
 })
-export class TuiionFeatureMembershipModule {}
+export class TuitionFeatureMembershipModule {}

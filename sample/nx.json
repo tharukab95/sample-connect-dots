@@ -14,7 +14,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
       }
     }
   },
@@ -42,7 +48,7 @@
     "shared-ui-table": {
       "tags": ["shared", "ui"]
     },
-    "tuiion-feature-membership": {
+    "tuition-feature-membership": {
       "tags": ["tuition", "feature"]
     },
     "tuition": {
@@ -66,6 +72,10 @@
     },
     "tuition-ui-cards": {
       "tags": ["tuition", "ui"]
+    },
+    "tuition-ui-cards-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tuition-ui-cards"]
     },
     "tuition-ui-main-layout": {
       "tags": ["tuition", "feature"]

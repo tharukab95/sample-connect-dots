@@ -47,10 +47,17 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: 'membership',
+        loadChildren: () =>
+          import(`@tuition/membership`).then(
+            (m) => m.TuitionFeatureMembershipModule
+          ),
+      },
+      {
         path: 'pricing',
         loadChildren: () =>
-          import(`@tuition/pricing`).then(
-            (m) => m.TuiionFeatureMembershipModule
+          import(`@tuition/subscriptions`).then(
+            (m) => m.TuitionFeatureSubscriptionsModule
           ),
       },
     ],

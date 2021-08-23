@@ -176,17 +176,17 @@
         }
       }
     },
-    "tuiion-feature-membership": {
+    "tuition-feature-membership": {
       "projectType": "library",
-      "root": "libs/tuiion/feature/membership",
-      "sourceRoot": "libs/tuiion/feature/membership/src",
+      "root": "libs/tuition/feature/membership",
+      "sourceRoot": "libs/tuition/feature/membership/src",
       "prefix": "sample",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tuiion/feature/membership"],
+          "outputs": ["coverage/libs/tuition/feature/membership"],
           "options": {
-            "jestConfig": "libs/tuiion/feature/membership/jest.config.js",
+            "jestConfig": "libs/tuition/feature/membership/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -194,8 +194,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/tuiion/feature/membership/src/**/*.ts",
-              "libs/tuiion/feature/membership/src/**/*.html"
+              "libs/tuition/feature/membership/src/**/*.ts",
+              "libs/tuition/feature/membership/src/**/*.html"
             ]
           }
         }
@@ -465,6 +465,63 @@
               "libs/tuition/ui/cards/src/**/*.ts",
               "libs/tuition/ui/cards/src/**/*.html"
             ]
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/tuition/ui/cards/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/tuition-ui-cards",
+            "config": {
+              "configFolder": "libs/tuition/ui/cards/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "tuition-ui-cards-e2e": {
+      "root": "apps/tuition-ui-cards-e2e",
+      "sourceRoot": "apps/tuition-ui-cards-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tuition-ui-cards-e2e/cypress.json",
+            "tsConfig": "apps/tuition-ui-cards-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tuition-ui-cards:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "tuition-ui-cards:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tuition-ui-cards-e2e/**/*.{js,ts}"]
           }
         }
       }

@@ -1,0 +1,95 @@
+:host {
+  .card {
+    display: flex;
+    max-width: 300px;
+    // width: 100%;
+    flex-direction: column;
+    background: linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 3) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 15;
+    transition: 0.3;
+  }
+
+  .card__head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 2px solid rgba(167, 123, 123, 0.4);
+  }
+
+  .card__title {
+    font-weight: normal;
+    font-size: 32px;
+    color: rgb(35, 91, 128);
+  }
+
+  .card__price {
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .card__amount {
+    font-weight: normal;
+    font-size: 36px;
+    color: rgb(20, 45, 73);
+  }
+
+  .card_amount span {
+    font-size: 36px;
+  }
+
+  .card__body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .card__item {
+    font-size: 18px;
+    color: #ffff;
+    margin-bottom: 10px;
+  }
+
+  .card__item span {
+    font-weight: 600;
+  }
+
+  .card__btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    height: 50px;
+    border: 1px solid rgba(24, 22, 22, 0.4);
+    background: linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 3) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 25px;
+    font-size: 18px;
+    color: rgb(15, 16, 17);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+}

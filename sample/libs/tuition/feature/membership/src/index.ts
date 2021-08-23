@@ -1,1 +1,1 @@
-export * from './lib/tuiion-feature-membership.module';
+export * from './lib/tuition-feature-membership.module';
